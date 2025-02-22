@@ -1,0 +1,65 @@
+spring:
+  profiles:
+    active: dev
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jwt_auth
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  mail:
+    host: localhost
+    port: 1025
+    username: mail
+    password: mail
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+
+  flyway:
+    enabled: true
+    baselineOnMigrate: true
+    default-schema: public
+
+springdoc:
+  default-produces-media-type: application/json
+server:
+  servlet:
+    context-path: /api/v1/
+
+application:
+  security:
+    jwt:
+      secret-key: b06a3928ff5c56587e288ffa666b10f3e82e8d1447984db89ad6fafdae20ac0de9abf6c81d14a0997747f68e110fe7e9e2723f051624fc5a37725fca2859ffc5
+      expiration: 8640000 # geçerlilik süresi
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
+  superUser:
+    uuid: 11111111-1111-1111-1111-111111111111
+    email: super@application.co
+    password: super #super
+
+swagger:
+  api: http://localhost:8080/api/v1/
