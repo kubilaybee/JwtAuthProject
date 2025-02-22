@@ -60,8 +60,7 @@ public class GlobalExceptionHandler {
             error -> {
               CommonError commonError = new CommonError();
               commonError.setStatus(HttpStatus.BAD_REQUEST.value());
-              commonError.setSource(
-                  error.getField());
+              commonError.setSource(error.getField());
               commonError.setDetail(error.getDefaultMessage());
               return commonError;
             })

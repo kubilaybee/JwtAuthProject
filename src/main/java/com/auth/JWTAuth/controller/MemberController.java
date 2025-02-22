@@ -11,7 +11,6 @@ import jakarta.validation.Valid;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -31,12 +30,6 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class MemberController extends BaseController {
   @Autowired private UserService userService;
-  @Autowired private MessageSource messageSource;
-
-  @GetMapping
-  public ResponseEntity<?> getTest() {
-    return new ResponseEntity<>("test", HttpStatus.OK);
-  }
 
   @GetMapping("/{page}/{size}")
   @Operation(summary = "Get All Users")
